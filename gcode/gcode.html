@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>From 3D model to machine language</title>
+
+		<!--<meta name="description" content="A short description of Java 8 Features">-->
+		<meta name="author" content="Gaétan Collaud">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../reveal.js-3.1.0/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.js-3.1.0/lib/css/zenburn.css">
+		<link rel="stylesheet" href="../reveal.js-3.1.0/css/theme/night.css">
+		<link rel="stylesheet" href = "../styles/bootstrap.css">
+
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi) ? '../reveal.js-3.1.0/css/print/pdf.css' : '../reveal.js-3.1.0/css/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		</script>
+		
+		<link rel="stylesheet" href = "../styles/custom.css">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>From 3D model to machine language</h2>
+					<img class="no-border" width="40%" src="images/fablab_logo_white.png" />
+					<p>
+						<small><a href="http://collaud.net">Gaétan Collaud</a> / <a href="http://fablab-fribourg.ch">Fablab-Fribourg</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>3D model</h2>
+
+					<img width="60%" src="images/cat_3d.png" />
+					<div style="font-size: 0.5em">
+						http://www.thingiverse.com/thing:683053
+					</div>
+				</section>
+
+				<section>
+					<h2>Gcode (machine code)</h2>
+					<pre><code data-trim class="gcode">
+						
+G92 E0                  ;zero the extruded length
+G1 F200 E3              ;extrude 3mm of feed stock
+G92 E0                  ;zero the extruded length again
+G1 F9000
+;Put printing message on LCD screen
+M117 Printing...
+
+;Layer count: 277
+;LAYER:0
+M107
+G0 F9000 X80.086 Y94.631 Z0.300
+;TYPE:SKIRT
+G1 F1200 X82.459 Y92.667 E0.05794
+G1 X85.457 Y91.570 E0.11799
+G1 X87.910 Y92.370 E0.16653
+G1 X90.568 Y93.588 E0.22153
+G1 X91.078 Y94.101 E0.23513
+G1 X92.300 Y92.215 E0.27741
+;...
+					</code></pre>
+
+					<div>
+						40'000 lines (2x1x3 cm)
+					</div>
+				</section>
+
+				<section>
+					<h2>Who is using GCode ?</h2>
+
+					<div class="row">
+					<div class="span4">
+						<img style="height:200px" src="images/ultimaker.jpg" /><br />
+						3D printer
+					</div>
+					<div class="span4">
+						<img style="height:200px" src="images/cnc.jpg" /><br />
+						CNC
+					</div>
+					<div class="span4">
+						<img style="height:200px" src="images/eggbot.jpg" /><br />
+						EggBot
+					</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>Layers !</h2>
+					<img width="60%" src="images/cardboard_layer.jpg" />
+					<div style="font-size: 0.5em">
+						http://www.instructables.com/id/Cardboard-Sphinx-of-Hatshepsut-123D-Make-hand-c/
+					</div>
+				</section>
+				<section>
+					<h4>Small layers...</h4>
+
+					<img width="40%" src="images/layer1.png" />
+					<img width="40%" src="images/layer2.png" />
+					<div>
+						300 layers * 0.1mm = 3cm
+					</div>
+				</section>
+
+
+				<section>
+					<h2>Slicers</h2>
+					<img width="60%" src="images/ninja_slice.jpeg" />
+					<div style="font-size: 0.5em">
+						https://bjjafter40blog.wordpress.com
+					</div>
+				</section>
+
+
+
+				<section>
+					<h2>From model to printer</h2>
+
+					<img width="100%" style="background: white;" src="images/flow.png" />
+				</section>
+
+				<section>
+					<h2>Cura</h2>
+					<img width="100%" src="images/cura.png" />
+				</section>
+
+				<section>
+					<h2>MakerWare</h2>
+					<img width="100%" src="images/makerware.png" />
+				</section>
+
+				<section>
+					<h2>Simplify3D</h2>
+					<img width="100%" src="images/simplify3d.png" />
+					<div style="font-size: 0.5em">
+						149$
+					</div>
+				</section>
+
+				<section>
+					<h2>Questions ? </h2>
+					<img width="70%" src="images/question.jpg" />
+					<div style="font-size: 0.5em">
+						http://www.thingiverse.com/thing:11191
+					</div>
+				</section>
+				
+				<section>
+					<h2>Demo on cura</h2>
+					<img width="100%" src="images/cura.png" />
+				</section>
+			</div>
+		</div>
+
+		<script src="../reveal.js-3.1.0/lib/js/head.min.js"></script>
+		<script src="../reveal.js-3.1.0/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+				hideAddressBar: true,
+				slideNumber: true,
+//				parallaxBackgroundImage: 'background/reveal-parallax-1.jpg', // e.g. "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"
+//				parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+//				parallaxBackgroundHorizontal: 200,
+//				parallaxBackgroundVertical: 50,
+				transition: 'none', // none/fade/slide/convex/concave/zoom
+				minScale: 1,
+				// Optional reveal.js plugins
+				dependencies: [
+					{src: '../reveal.js-3.1.0/lib/js/classList.js', condition: function () {
+							return !document.body.classList;
+						}},
+					{src: '../reveal.js-3.1.0/plugin/markdown/marked.js', condition: function () {
+							return !!document.querySelector('[data-markdown]');
+						}},
+					{src: '../reveal.js-3.1.0/plugin/markdown/markdown.js', condition: function () {
+							return !!document.querySelector('[data-markdown]');
+						}},
+					{src: '../reveal.js-3.1.0/plugin/highlight/highlight.js', async: true, condition: function () {
+							return !!document.querySelector('pre code');
+						}, callback: function () {
+							hljs.initHighlightingOnLoad();
+						}},
+					{src: '../reveal.js-3.1.0/plugin/zoom-js/zoom.js', async: true},
+					{src: '../reveal.js-3.1.0/plugin/notes/notes.js', async: true}
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
