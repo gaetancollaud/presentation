@@ -1,0 +1,6 @@
+
+
+ * Components
+ * Pipes
+ * Dependency injection (provider and stuff)
+ * Zone (for update from external libs)
