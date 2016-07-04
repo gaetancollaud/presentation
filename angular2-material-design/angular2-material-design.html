@@ -60,14 +60,14 @@
 			<ul>
 				<li>Angular2</li>
 				<li>Material Design</li>
-				<li>Solutions
+				<li>Solutions tested
 					<ul>
 						<li>Angular2 material design</li>
 						<li>Angular2 and polymer</li>
 						<li>Bootstrap material design and liferay</li>
-						<li>Final solution</li>
 					</ul>
 				</li>
+				<li>Final solution</li>
 				<li>Demo</li>
 			</ul>
 		</section>
@@ -113,7 +113,6 @@
 					<li>Angular2 material design <br><em> - library</em></li>
 					<li>Angular2 and polymer <br><em> - framework</em></li>
 					<li>Bootstrap material design <br><em> - extension of bootstrap</em></li>
-					<li>Final solution</li>
 				</ul>
 			</section>
 			<section>
@@ -122,7 +121,7 @@
 					<li>Pros
 						<ul>
 							<li>Library by google</li>
-							<li>Very good integration with Angular 2</li>
+							<li>Very good integration <br/>with Angular 2</li>
 						</ul>
 					</li>
 					<li>Cons
@@ -132,7 +131,7 @@
 						</ul>
 					</li>
 				</ul>
-				<pre>https://material.angular.io/</pre>
+				<pre><a href="https://material.angular.io">https://material.angular.io</a></pre>
 			</section>
 			<section>
 				<h2>Polymer</h2>
@@ -140,7 +139,7 @@
 					<li>Pros
 						<ul>
 							<li>Lots of components</li>
-							<li>Developed by google</li>
+							<li>Developed by Google</li>
 							<li>Work with Angular 2</li>
 						</ul>
 					</li>
@@ -151,210 +150,46 @@
 						</ul>
 					</li>
 				</ul>
-				<pre>https://www.polymer-project.org/</pre>
+				<pre><a href="https://www.polymer-project.org">https://www.polymer-project.org</a></pre>
 			</section>
 			<section>
 				<h2>Bootstrap Material design</h2>
 				<ul>
 					<li>Pros
 						<ul>
-							<li>Use Boostrap element (only the design change)</li>
+							<li>Use Boostrap elements</li>
 							<li>Nothing new to learn</li>
 						</ul>
 					</li>
 					<li>Cons
 						<ul>
 							<li>Conflict with liferay CSS</li>
-							<li>Don't even ask about IE...</li>
+							<li>We must trigger JS <br/>functions from angular</li>
 						</ul>
 					</li>
 				</ul>
-				<pre>https://github.com/FezVrasta/bootstrap-material-design</pre>
+				<pre><a href="https://github.com/FezVrasta/bootstrap-material-design">https://github.com/FezVrasta/bootstrap-material-design</a></pre>
 			</section>
 		</section>
 		<section>
 			<section>
-				<h2>New collection methods</h2>
-				<p>Exemple of Map</p>
+				<h2>Final solution</h2>
 				<ul>
-					<li>foreach</li>
-					<li>getOrDefault</li>
-					<li>replace</li>
-					<li>compute</li>
-					<li>putIfAbsent</li>
-					<li>merge</li>
-					<li>...</li>
+					<li>Angular 2</li>
+					<li>Material design</li>
+					<li>Gulp as build system</li>
+					<li>Standalone development</li>
+					<li>Iframe in liferay</li>
 				</ul>
 			</section>
 			<section>
-						<pre><code data-trim class="java">
-Map&lt;Integer, String&gt; map = new HashMap<>();
-map.put(1, "one");
-//[...]
-
-//in java 8
-String varOne = map.getOrDefault(2, "notFound"); // "one"
-String varTwo = map.getOrDefault(2, "notFound"); // "not found"
-
-//back in time
-String varTwo = map.contains(2) ? map.get(2) : "notFound";
-
-//if we know Optional but not getOrDefault
-String varTwo = Optional.ofNullable(map.get(2)).orElse("notFound");
-					</code></pre>
-			</section>
-		</section>
-
-		<section>
-			<section>
-				<aside class="notes">
-					Runnable<br/>
-					IHM listener
-				</aside>
-				<h2>Lambda</h2>
-				<p>Some "functional" interface</p>
-						<pre><code data-trim class="java">
-@FunctionalInterface //not required
-interface MyInterface{
-	void doSomething(String arg1);
-}
-</code></pre>
-				<p>Before lambda</p>
-						<pre><code data-trim class="java">
-obj.callback(new MyInterface() {
-	@Override
-	public void doSomething(String arg1, int arg2) {
-		System.out.println(arg1+" : "+arg2);
-	}});
-</code></pre>
-				<p>With lambda</p>
-						<pre><code data-trim class="java">
-					obj.callback((arg1, arg2) -> System.out.println(arg1+" : "+arg2));
-					</code></pre>
+				<h2>Questions ?</h2>
 			</section>
 			<section>
-						<pre><code data-trim class="java">
-List&lt;Camera&gt; list = getAllCameras();
-
-list.forEach(new Consumer&lt;Camera&gt;() {
-			@Override
-			public void accept(Camera cam) {
-				System.out.println(cam.toString);
-			}
-		});
-
-//is equal to
-list.forEach(cam -> {
-	System.out.println(cam.toString);
-});
-
-//is equal to
-list.forEach(cam -> System.out.println(cam.toString));
-</code></pre>
+				<h2>Demo</h2>
+				<pre><a href="http://localhost:3000">http://localhost:3000</a></pre>
+				<pre><a href="http://integration.videoprotector.com/customers">http://integration.videoprotector.com/customers</a></pre>
 			</section>
-		</section>
-
-		<section>
-			<section>
-				<h2>Streams</h2>
-				<img width="100%" src="images/stream1.jpg"/>
-				<div style="font-size: 0.5em">
-					http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html
-				</div>
-			</section>
-			<section>
-				<aside class="notes">
-					<ul>
-						<li>Executed only when consumed</li>
-						<li>Can only be consumed once</li>
-						<li>Lazy as fuck</li>
-					</ul>
-				</aside>
-				<h3>Parallel stream</h3>
-				<ul>
-					<li>Split the stream over multiple threads</li>
-					<li>Easy to use</li>
-					<li>Gain over big collection</li>
-					<li>Loss over small collection</li>
-					<li>Not good on server application</li>
-				</ul>
-						<pre><code data-trim class="java">
-List&lt;String&gt; list = new HashMap<>();
-
-Stream&lt;String&gt; sequentialStream = list.stream();
-Stream&lt;String&gt; parallelStream = list.parallelStream();
-					</code></pre>
-			</section>
-			<section>
-				<h3>Example - Schema</h3>
-				<img height="100%" src="images/stream2.jpg"/>
-				<div style="font-size: 0.5em">
-					http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html
-				</div>
-			</section>
-			<section>
-				<h3>Example - Code</h3>
-				<ul>
-					<li>take only the cameras from <i>axis</i> type</li>
-					<li>sorted (using the default comparator)</li>
-					<li>take only the <i>id</i></li>
-					<li>result in a set</li>
-				</ul>
-						<pre><code data-trim class="java">
-List&lt;Camera&gt; list = getAllCameras();
-
-Set&lt;Integer&gt; axisCamIds = list.stream().
-	.filter(cam -> cam.type==CameraType.AXIS)
-	.sorted()
-	.map(cam -> cam.getId())
-	.collect(Collectors.toSet());
-
-</code></pre>
-			</section>
-			<section>
-				<aside class="notes">
-					pointer function
-				</aside>
-				<h3>Optional and lambda</h3>
-						<pre><code data-trim class="java">
-Optional&lt;Integer&gt; npOfPerson = Optional.ofNullable(person)
-	.map(p -> p.getCity)
-	.map(City::getNPA)	//function pointer
-	.filter(npa -> npa > 2000);
-</code></pre>
-			</section>
-		</section>
-
-		<section>
-			<h2>Lambda/Stream</h2>
-			<ul>
-				<li>Small amount of code</li>
-				<li>Easy to read</li>
-				<li>Easy to parallelize</li>
-			</ul>
-
-			<p>But...</p>
-			<ul>
-				<li>Can be difficult to understand</li>
-				<li>Debugging is a hard/not possible</li>
-			</ul>
-
-		</section>
-		<section>
-			<h2>Questions ?</h2>
-					<pre><code data-trim class="java">
-System.out.println(
-	Arrays.stream(new String[]{
-		"Do",
-		"you",
-		"have",
-		"questions",
-		"?",
-	}).reduce("", (l, r) -> l+" "+r));
-</code></pre>
-					<pre><code class="java"> Do you have questions ?
-</code></pre>
-
 		</section>
 	</div>
 </div>
