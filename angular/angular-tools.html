@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Angular 2 - What's new compare to angular 1</title>
+
+	<meta name="description" content="A short description of Java 8 Features">
+	<meta name="author" content="Gaétan Collaud">
+
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/css/zenburn.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/night.min.css"/>
+	<!--<link rel="stylesheet"-->
+	<!--href="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/bootstrap/css/bootstrap.css">-->
+
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ?
+			'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.min.css' :
+			'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/paper.min.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		.reveal {
+			/*font-size: 38px;*/
+		}
+
+
+	</style>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+		<section>
+			<h1>Angular tools</h1>
+			<h3>and libraries</h3>
+			<p>
+				<small>
+					<a href="http://collaud.net">Gaétan Collaud</a> / <a href="http://morphean.ch">Morphean</a>
+				</small>
+			</p>
+		</section>
+
+		<section>
+			<section>
+				<h2>Typescript</h2>
+				<ul>
+					<li>Superset for javascript</li>
+					<li>Introduce types</li>
+					<li>Oriented object</li>
+					<li>Need compilation</li>
+					<li>100% javascript library compatible</li>
+					<li>Launched by Microsoft (2012)</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Simple Typescript</h2>
+				<pre><code data-trim class="typescript">
+import {Vehicule} from "./vehicule";
+export class Car extends Vehicule{
+	public constructor(private _brand: CarBrand){
+	}
+	public isFromBrand(other: CarBrand): boolean{
+		return this._brand === other;
+	}
+	protected get brand(): CarBrand{
+		return this._brand;
+	}
+}
+export enum CarBrand{
+	VW,
+	TOYOTA
+}
+					</code></pre>
+
+				<aside class="notes">
+					constructor<br/>
+					field in constructor<br/>
+					getter setter<br/>
+				</aside>
+			</section>
+			<section>
+				<h2>Result (ES6)</h2>
+				<pre><code data-trim class="javascript">
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const vehicule_1 = require("./vehicule");
+class Car extends vehicule_1.Vehicule {
+    constructor(_brand) {
+        super();
+        this._brand = _brand;
+    }
+    isFromBrand(other) {
+        return this._brand === other;
+    }
+    get brand() {
+        return this._brand;
+    }
+}
+exports.Car = Car;
+var CarBrand;
+(function (CarBrand) {
+    CarBrand[CarBrand["VW"] = 0] = "VW";
+    CarBrand[CarBrand["TOYOTA"] = 1] = "TOYOTA";
+})(CarBrand = exports.CarBrand || (exports.CarBrand = {}));
+//# sourceMappingURL=car.js.map
+					</code></pre>
+			</section>
+			<section>
+				<h2>Result (ES5)</h2>
+				<pre><code data-trim class="javascript">
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var vehicule_1 = require("./vehicule");
+var Car = /** @class */ (function (_super) {
+    __extends(Car, _super);
+    function Car(_brand) {
+        var _this = _super.call(this) || this;
+        _this._brand = _brand;
+        return _this;
+    }
+    Car.prototype.isFromBrand = function (other) {
+        return this._brand === other;
+    };
+    Object.defineProperty(Car.prototype, "brand", {
+        get: function () {
+            return this._brand;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Car;
+}(vehicule_1.Vehicule));
+exports.Car = Car;
+var CarBrand;
+(function (CarBrand) {
+    CarBrand[CarBrand["VW"] = 0] = "VW";
+    CarBrand[CarBrand["TOYOTA"] = 1] = "TOYOTA";
+})(CarBrand = exports.CarBrand || (exports.CarBrand = {}));
+//# sourceMappingURL=car.js.map
+					</code></pre>
+
+			</section>
+
+			<section>
+				<h2>Compiler options</h2>
+				<pre><code data-trim class="json">
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "outDir": "dist/",
+    "rootDir": "src/"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
+					</code></pre>
+
+				<aside class="notes">
+					target !<br/>
+					out dir (normally next to ts)<br/>
+					map file<br/>
+				</aside>
+			</section>
+		</section>
+
+		<section>
+			<h2>EditorConfig</h2>
+			<p>Simple way to handle indentation configuration !</p>
+			<p><a href="http://editorconfig.org/">editorconfig.org</a></p>
+			<pre><code data-trim class="txt">
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{js,ts}]
+indent_style = tab
+indent_size = 4
+
+[*.yml]
+indent_style = space
+indent_size = 2
+					</code></pre>
+		</section>
+
+		<section>
+			<h2>TSLint</h2>
+			<p>Lint tools for typescript</p>
+			<p><a href="https://palantir.github.io/tslint/">palantir.github.io/tslint</a></p>
+			<pre><code data-trim class="txt">
+{
+  "rulesDirectory": [
+    "node_modules/codelyzer"
+  ],
+  "rules": {
+    "class-name": true,
+    "eofline": true,
+    "import-blacklist": [
+      true,
+      "rxjs"
+    ],
+    "import-spacing": true,
+    "indent": [
+      true,
+      "tabs"
+    ],
+...
+					</code></pre>
+
+			<aside class="notes">
+				Sonar but static<br/>
+				Can break compilation<br/>
+				Very usefully for CI<br/>
+				Integrated in angular cli<br/>
+			</aside>
+		</section>
+
+		<section>
+			<section>
+				<h2>Yarn</h2>
+				<p>Replacement of NPM</p>
+				<p><a href="https://yarnpkg.com/en/">yarnpkg.com</a></p>
+				<ul>
+					<li>Reproducible build (lock file)</li>
+					<li>Local cache</li>
+					<li>Multi connexion when downloading</li>
+					<li>Npm is now trying to follow the same concepts...</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Yarn</h2>
+				<p>Not all commands are the same</p>
+				<table>
+					<tr>
+						<th width="40%">Command</th>
+						<th>Description</th>
+					</tr>
+					<tr>
+						<td>install</td>
+						<td>Install package found in package.json and yarn.lock</td>
+					</tr>
+					<tr>
+						<td>add <i>package</i></td>
+						<td>Add and install a package</td>
+					</tr>
+					<tr>
+						<td>remove <i>package</i></td>
+						<td>Remove a package</td>
+					</tr>
+					<tr>
+						<td>upgrade <i>[package]</i></td>
+						<td>Upgrade one or all package</td>
+					</tr>
+				</table>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h2>Karma - Jasmine</h2>
+				<ul>
+					<li>Karma is a javascript test runner</li>
+					<li>Jasmine is a test framework</li>
+					<li>Both integrated with angular cli</li>
+					<li>Angular Test bed available</li>
+				</ul>
+
+				<aside class="notes">
+					Testbed <br/>
+					- DI<br/>
+					- Compile component<br/>
+					- Simulate change detection<br/>
+				</aside>
+			</section>
+
+			<section>
+				<h2>Protractor</h2>
+				<ul>
+					<li>End to end testing</li>
+					<li>Run in a real browser</li>
+					<li>Run the "production" app</li>
+					<li>Browser stack for CI</li>
+					<li>Chrome headless for CI</li>
+				</ul>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h2>Webpack</h2>
+				<ul>
+					<li>Maven of the frontend</li>
+					<li>Configuration based</li>
+					<li>Plugins available</li>
+					<li>Integrated with angular-cli</li>
+				</ul>
+
+			</section>
+			<section>
+				<h2>Webpack dev server</h2>
+				<ul>
+					<li>Development server</li>
+					<li>RAM based filesystem</li>
+					<li>Compile and refresh when saving a file</li>
+					<li>Can push part of code instead of reloading the page</li>
+					<li>Integrated with angular-cli</li>
+				</ul>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h2>Angular cli</h2>
+				<p><a href="https://github.com/angular/angular-cli">github.com/angular/angular-cli</a></p>
+				<ul>
+					<li>command line to manage an angular app</li>
+					<li>Create base structure</li>
+					<li>Setup environment</li>
+					<li>Create example files</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Usage</h2>
+				<pre><code class="bash">
+ng help #display help
+ng new appName #Create a new app
+ng serve #Start the development server
+ng build --prod #build application (prod profile)
+ng generate [component|pipe|...] # Generate an item
+...
+				</code></pre>
+			</section>
+			<section>
+				<h2>Build files</h2>
+				<table>
+					<tr>
+						<td><b>inline.js</b></td>
+						<td>Webpack loader to load other files</td>
+					</tr>
+					<tr>
+						<td><b>vendors.bundle.js</b></td>
+						<td>external libraries (angular included)</td>
+					</tr>
+					<tr>
+						<td><b>polyfills.bundle.js</b></td>
+						<td>polyfills</td>
+					</tr>
+					<tr>
+						<td><b>styles.css</b></td>
+						<td>CSS</td>
+					</tr>
+					<tr>
+						<td><b>main.bundle.js</b></td>
+						<td>Your application</td>
+					</tr>
+				</table>
+			</section>
+			<section>
+				<h2>Build results</h2>
+				<table>
+					<tr>
+						<td>Dev</td>
+						<td>Prod</td>
+					</tr>
+					<tr>
+						<td>
+							<img src="images/angular-cli-dev.png"/>
+						</td>
+						<td>
+							<img src="images/angular-cli-prod.png"/>
+						</td>
+					</tr>
+				</table>
+			</section>
+		</section>
+
+		<section>
+			<h2>Docker integration</h2>
+			<pre><code data-trim class="bash">
+FROM nginx
+
+# Configure for angular fallback routes
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy built app to wwwroot
+COPY dist /usr/share/nginx/html
+			</code></pre>
+			<p><a href="https://gist.github.com/calebwoods/5e88b5e323d55ad71195">nginx.conf</a></p>
+		</section>
+
+		<section>
+			<section>
+				<h2>RxJs</h2>
+				<p><a href="http://reactivex.io/rxjs/">reactivex.io/rxjs/</a></p>
+				<ul>
+					<li>Promises on steroid</li>
+					<li>Similar to stream (in java)</li>
+					<li>Allow to handle async processing</li>
+					<li>Not required but fully supported by Angular</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Stream</h2>
+				<ul>
+					<li>Can be subscribed multiple times</li>
+					<li>Can have 0 or more items</li>
+					<li>Can have 0 or more errors</li>
+					<li>Can be completed</li>
+					<li>Can live as long as there is subsribers and it's not completed</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Stream operations</h2>
+				<p>
+					<a href="http://reactivex.io/documentation/operators.html">reactivex.io/documentation/operators.html</a>
+				</p>
+				<ul>
+					<li>400+ official operator</li>
+					<li>You can create your own</li>
+					<li>Some operator must be imported when used</li>
+				</ul>
+
+				<pre><code data-trim class="typescript">
+import "rxjs/add/observable/combineLatest"
+				</code></pre>
+			</section>
+			<section>
+				<h2>Operation: filter</h2>
+				<img src="images/rxjs-filter.png"/>
+			</section>
+			<section>
+				<h2>Operation: map</h2>
+				<img src="images/rxjs-map.png"/>
+			</section>
+			<section>
+				<h2>Operation: zip</h2>
+				<img src="images/rxjs-zip.png"/>
+			</section>
+			<section>
+				<h2>Operation: combineLatest</h2>
+				<img src="images/rxjs-combine-latest.png"/>
+			</section>
+			<section>
+				<h2>Operation: debounce</h2>
+				<img src="images/rxjs-debounce.png"/>
+			</section>
+			<section>
+				<h2>Observable</h2>
+				<pre><code data-trim class="typescript">
+let sub:ISubscription = myObservable.subscribe(
+	(data: MyDataType) => {
+		console.log("new data", data);
+	},
+	(error: Error) => {
+		console.log("shit happends", error);
+	},
+	() => {
+		console.log("stream complete");
+	});
+					</code></pre>
+			</section>
+			<section>
+				<h2>Subscription</h2>
+				<p class="alert alert-danger">Never forget to unsubscribe !</p>
+				<pre><code data-trim class="typescript">
+	private sub:ISubscription;
+	public onInit(): void{
+		sub = myObservable.subscribe(...);
+	}
+	public onDestroy(){
+		sub.unsubscribe();
+	}
+					</code></pre>
+			</section>
+
+			<section>
+				<h2>Observable in API call</h2>
+				<pre><code data-trim class="typescript">
+
+@Injectable()
+export class CameraApiService {
+	constructor(protected http: Http) {
+	}
+
+	public list(): Observable< CameraTO[] > {
+		this.http.get('/api/items');
+	}
+}
+					</code></pre>
+			</section>
+		</section>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.min.js"></script>
+
+<script>
+
+	// Full list of configuration options available at:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: false,
+		progress: true,
+		history: true,
+		center: true,
+		hideAddressBar: true,
+//				parallaxBackgroundImage: 'background/reveal-parallax-1.jpg', // e.g. "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"
+//				parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+//				parallaxBackgroundHorizontal: 200,
+//				parallaxBackgroundVertical: 50,
+		transition: 'none', // none/fade/slide/convex/concave/zoom
+
+		// Optional reveal.js plugins
+		dependencies: [
+			{
+				src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/classList.js',
+				condition: function () {
+					return !document.body.classList;
+				}
+			},
+			{
+				src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/markdown/marked.js',
+				condition: function () {
+					return !!document.querySelector('[data-markdown]');
+				}
+			},
+			{
+				src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/markdown/markdown.min.js',
+				condition: function () {
+					return !!document.querySelector('[data-markdown]');
+				}
+			},
+			{
+				src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/highlight/highlight.min.js',
+				async: true,
+				condition: function () {
+					return !!document.querySelector('pre code');
+				},
+				callback: function () {
+					hljs.initHighlightingOnLoad();
+				}
+			},
+			{src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/zoom-js/zoom.min.js', async: true},
+			{src: 'http://cdn.rawgit.com/hakimel/reveal.js/3.5.0/plugin/notes/notes.js', async: true}
+		]
+	});
+
+</script>
+
+</body>
+</html>
