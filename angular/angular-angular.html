@@ -266,8 +266,89 @@ export class NgIf {
 }
 				</code></pre>
 			</section>
+		</section>
 
+		<section>
+			<section>
+				<h2>Pipes</h2>
+				<ul>
+					<li>Replacement of AngularJS filter</li>
+					<li>Used to embellish a variable</li>
+					<li>Can be asynchronous</li>
+					<li>Can work with any type</li>
+					<li>Can accept parameter</li>
+					<li>Can be chained</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Built-in pipes</h2>
+				<ul>
+					<li>async</li>
+					<li>json</li>
+					<li>uppercase / lowercase / titlecase</li>
+					<li>currency</li>
+					<li>date</li>
+					<li>slice</li>
+					<li>...</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Async pipe</h2>
+				<pre><code data-trim class="html">
+<p>async value: {{ observableOrPromise | async }}</p>
+				</code></pre>
+			</section>
+			<section>
+				<h2>Usage</h2>
+				<pre><code data-trim class="typescript">
+import { Pipe, PipeTransform } from '@angular/core';
 
+@Pipe({
+	name: 'exponentialStrength'
+})
+export class ExponentialStrengthPipe implements PipeTransform {
+
+	transform(value: number, exponent: string): number {
+		let exp = parseFloat(exponent);
+		return Math.pow(value, isNaN(exp) ? 1 : exp);
+	}
+}
+				</code></pre>
+				<pre><code data-trim class="html">
+					<p>squared: {{myNumber | exponentialStrength: 2}}</p>
+				</code></pre>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>Services</h2>
+				<ul>
+					<li>Can be injected in components</li>
+					<li>Can be injected in other services</li>
+					<li>Is a singleton (unless you declare it multiple times in the dependencies tree)</li>
+					<li>Useful to manage data</li>
+					<li>Can be easily unit-tested</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Services</h2>
+				<pre><code data-trim class="typescript">
+@Injectable()
+class UsefulService {
+}
+
+@Injectable()
+class NeedsService {
+	constructor(public service: UsefulService) {}
+}
+
+//in unit test
+const injector = ReflectiveInjector
+	.resolveAndCreate([NeedsService, UsefulService]);
+expect(injector.get(NeedsService).service instanceof UsefulService)
+	.toBe(true);
+				</code></pre>
+			</section>
 		</section>
 	</div>
 </div>

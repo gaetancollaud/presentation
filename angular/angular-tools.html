@@ -15,7 +15,8 @@
 	<meta name="viewport"
 		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.min.css"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/css/zenburn.min.css"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/night.min.css"/>
@@ -177,16 +178,16 @@ var CarBrand;
 				<h2>Compiler options</h2>
 				<pre><code data-trim class="json">
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "sourceMap": true,
-    "outDir": "dist/",
-    "rootDir": "src/"
-  },
-  "exclude": [
-    "node_modules"
-  ]
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es5",
+		"sourceMap": true,
+		"outDir": "dist/",
+		"rootDir": "src/"
+	},
+	"exclude": [
+		"node_modules"
+	]
 }
 					</code></pre>
 
@@ -195,6 +196,66 @@ var CarBrand;
 					out dir (normally next to ts)<br/>
 					map file<br/>
 				</aside>
+			</section>
+			<section>
+				<h2>Any type</h2>
+				<ul>
+					<li>Can be use to define any types</li>
+					<li>Like Object in java</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Strict null</h2>
+				<ul>
+					<li>Compile error if you set to null a non-nullable field</li>
+					<li>Same for undefined</li>
+					<li>Disabled by default, but can be enabled in the compiler options</li>
+				</ul>
+				<pre><code data-trim class="json">
+{
+	"compilerOptions": {
+		"strictNullChecks": true
+...
+				</code></pre>
+			</section>
+			<section>
+				<h2>Strict null example</h2>
+				<pre><code data-trim class="typescript">
+let x: number;
+let y: number | undefined;
+let z: number | null | undefined;
+x = 1;  // Ok
+y = 1;  // Ok
+z = 1;  // Ok
+x = undefined;  // Error
+y = undefined;  // Ok
+z = undefined;  // Ok
+x = null;  // Error
+y = null;  // Error
+z = null;  // Ok
+x = y;  // Error
+x = z;  // Error
+y = x;  // Ok
+y = z;  // Error
+z = x;  // Ok
+z = y;  // Ok
+				</code></pre>
+
+			</section>
+			<section>
+				<h2>Union</h2>
+				<pre><code data-trim class="typescript">
+transform(obj: Observable< any > | Promise< any > | null): any{
+	if(obj instanceof of Observable){
+		//...
+	}else if (obj instanceof of Promise){
+		//..
+	}else{
+		//...
+	}
+}
+				</code></pre>
+
 			</section>
 		</section>
 
