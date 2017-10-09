@@ -207,7 +207,7 @@ var CarBrand;
 			<section>
 				<h2>Strict null</h2>
 				<ul>
-					<li>Compile error if you set to null a non-nullable field</li>
+					<li>Compile error if you set to null a non-nullable var</li>
 					<li>Same for undefined</li>
 					<li>Disabled by default, but can be enabled in the compiler options</li>
 				</ul>
@@ -243,7 +243,8 @@ z = y;  // Ok
 
 			</section>
 			<section>
-				<h2>Union</h2>
+				<h2>Union and intersection</h2>
+				<p><a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">Advanced types</a></p>
 				<pre><code data-trim class="typescript">
 transform(obj: Observable< any > | Promise< any > | null): any{
 	if(obj instanceof of Observable){
@@ -408,7 +409,7 @@ indent_size = 2
 				<h2>Angular cli</h2>
 				<p><a href="https://github.com/angular/angular-cli">github.com/angular/angular-cli</a></p>
 				<ul>
-					<li>command line to manage an angular app</li>
+					<li>Command line to manage an angular app</li>
 					<li>Create base structure</li>
 					<li>Setup environment</li>
 					<li>Create example files</li>
@@ -492,8 +493,14 @@ COPY dist /usr/share/nginx/html
 				<li>"Async tasks" stacktrace</li>
 				<li>Can attach hook to zone (onEnter, onLeave)</li>
 				<li>Used in Angular to update view (render)</li>
+				<li><s>$timeout</s> or <s>$digest</s></li>
 			</ul>
 			<p><a href="https://www.youtube.com/watch?v=3IqtmUscE_U">Good explanation video</a> </p>
+			<aside class="notes">
+				external lib event -> runInZone<br/>
+				flash<br/>
+				three.js
+			</aside>
 		</section>
 
 		<section>
@@ -502,9 +509,9 @@ COPY dist /usr/share/nginx/html
 				<p><a href="http://reactivex.io/rxjs/">reactivex.io/rxjs/</a></p>
 				<ul>
 					<li>Promises on steroid</li>
-					<li>Similar to stream (in java)</li>
+					<li>Stream concept</li>
 					<li>Allow to handle async processing</li>
-					<li>Not required but fully supported by Angular</li>
+					<li>Fully integratedAngular</li>
 				</ul>
 			</section>
 			<section>
@@ -596,6 +603,9 @@ export class CameraApiService {
 }
 					</code></pre>
 			</section>
+		</section>
+		<section>
+			<img src="images/cat-question-1.png" />
 		</section>
 		<section>
 			<h2>Next: <a href="./angular-angular.html">Angular</a></h2>

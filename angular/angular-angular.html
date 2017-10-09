@@ -517,13 +517,13 @@ const appRoutes: Routes = [{
 			<section>
 				<h2>Router: outlet</h2>
 				<pre><code data-trim class="typescript">
-[{
+const appRoutes: Routes = [{
    path: 'parent',
    children: [
      { path: '', component: MainChild },
      { path: '', component: AuxChild, outlet: 'aux' }
    ]
-}]
+}];
 				</code></pre>
 			</section>
 			<section>
@@ -657,12 +657,12 @@ const appRoutes: Routes = [{
 			<section>
 				<h2>JIT: Just In Time</h2>
 				<ul>
-					<li>Compile included in bundle</li>
+					<li>Compiler included in bundle</li>
 					<li>Compilation made in browser</li>
 					<li>Compilation made when route activated</li>
 					<li>Do not compile useless stuff</li>
 					<li>Quicker for development</li>
-					<li>Bundle was smaller, now bigger</li>
+					<li>Bundle was smaller, now more or less equal to AOT</li>
 				</ul>
 			</section>
 			<section>
@@ -684,7 +684,7 @@ const appRoutes: Routes = [{
 				<h2>Lazy loading</h2>
 				<ul>
 					<li>Module load only when needed</li>
-					<li>Loading of the module trig by route change</li>
+					<li>Loading of the module trigged by route change</li>
 					<li>The browser will then load a new js file</li>
 					<li>Can speedup big application</li>
 				</ul>
@@ -709,6 +709,7 @@ const appRoutes: Routes = [
 			<h2>Angular universal</h2>
 			<p><a href="https://universal.angular.io/">universal.angular.io</a></p>
 			<ul>
+				<li>Server side compilation</li>
 				<li>Can improve loading time</li>
 				<li>Improve crawls from search engine</li>
 				<li>Project at early stage</li>
@@ -719,11 +720,14 @@ const appRoutes: Routes = [
 			<h2>Service worker</h2>
 			<ul>
 				<li>Package angular@service-worker</li>
-				<li>Help creating service work for your app</li>
+				<li>Help creating service worker for your app</li>
 				<li>Progressive web app</li>
 				<li>Project at early stage</li>
 				<li>Integrated with angular-cli</li>
 			</ul>
+		</section>
+		<section>
+			<img src="images/cat-question-2.jpg" />
 		</section>
 		<section>
 			<h2>Next: <a href="./angular-additional-topics.html">Additional topics</a></h2>

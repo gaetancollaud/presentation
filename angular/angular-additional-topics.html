@@ -62,15 +62,76 @@
 		</section>
 
 		<section>
-			<h2>Good practices</h2>
+			<h2>Additional topics</h2>
 			<ul>
-				<li>Api service</li>
 				<li>Integrate libraries</li>
-				<li>Model and view</li>
+				<li>Best practices
+					<ul>
+						<li>Api service</li>
+						<li>Model and view</li>
+					</ul>
+				</li>
 			</ul>
+		</section>
+		<section>
+			<section>
+				<h2>Install an angular library</h2>
+				<pre><code data-trim class="bash">
+yarn add @ngx-translate/core
+				</code></pre>
+				<pre><code data-trim class="typescript">
+@NgModule({
+    imports: [
+        BrowserModule,
+        TranslateModule.forRoot()
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }
+				</code></pre>
+				<p>That's it !</p>
+			</section>
+			<section>
+				<h2>External library</h2>
+				<pre><code data-trim class="bash">
+yarn add locomote-video-player
+				</code></pre>
+				<p>
+					<a href="https://bitbucket.softcom.pro/projects/MORPVMS/repos/vp-angular2-public/browse/src/main/ts/components/video/player/locomote/locomote.ts">locomote.ts</a>
+				</p>
+				<pre><code data-trim class="typescript">
+declare const Locomote: any;
+
+@Component(...)
+export class PlayerLocomote implements AfterViewInit {
+
+	private locomote: Locomote;
+
+	ngAfterViewInit(): void {
+		this.locomote = new Locomote(...);
+	}
+				</code></pre>
+
+				<pre><code data-trim class="json">
+{ //angular-cli.json
+	"apps": [{
+		"scripts": [
+			"../node_modules/locomote/dist/locomote.min.js"
+		],
+				</code></pre>
+				<aside class="notes">
+					external lib event -> runInZone<br/>
+					flash
+				</aside>
+			</section>
 		</section>
 
 		<section>
+			<section>
+				<h2>Angular style guide</h2>
+				<p>The angular team provide a detailed style guide on their website</p>
+				<p><a href="https://angular.io/guide/styleguide">angular.io/guide/styleguide</a></p>
+			</section>
 			<section>
 				<h2>Api service</h2>
 				<ul>
@@ -114,52 +175,6 @@ public add(obj:T):Observable< T> {
 }
 //...
 					</code></pre>
-			</section>
-		</section>
-		<section>
-			<section>
-				<h2>Install an angular library</h2>
-				<pre><code data-trim class="bash">
-yarn add @ngx-translate/core
-				</code></pre>
-				<pre><code data-trim class="typescript">
-@NgModule({
-    imports: [
-        BrowserModule,
-        TranslateModule.forRoot()
-    ],
-    bootstrap: [AppComponent]
-})
-export class AppModule { }
-				</code></pre>
-				<p>That's it !</p>
-			</section>
-			<section>
-				<h2>External library</h2>
-				<pre><code data-trim class="bash">
-yarn add locomote-video-player
-				</code></pre>
-				<p><a href="https://bitbucket.softcom.pro/projects/MORPVMS/repos/vp-angular2-public/browse/src/main/ts/components/video/player/locomote/locomote.ts">locomote.ts</a></p>
-				<pre><code data-trim class="typescript">
-declare const Locomote: any;
-
-@Component(...)
-export class PlayerLocomote implements AfterViewInit {
-
-	private locomote: Locomote;
-
-	ngAfterViewInit(): void {
-		this.locomote = new Locomote(...);
-	}
-				</code></pre>
-
-				<pre><code data-trim class="json">
-{ //angular-cli.json
-	"apps": [{
-		"scripts": [
-			"../node_modules/locomote/dist/locomote.min.js"
-		],
-				</code></pre>
 			</section>
 		</section>
 
@@ -217,8 +232,14 @@ export class UserList implements OnInit {
 			</section>
 			<section>
 				<h2>Schematic</h2>
-				<img src="images/user-datastore.png" style="background: white;" />
+				<img src="images/user-datastore.png" style="background: white;"/>
 			</section>
+		</section>
+		<section>
+			<img src="images/cat-question-3.jpg" />
+		</section>
+		<section>
+			<img src="images/cat-work.jpg" />
 		</section>
 
 	</div>
