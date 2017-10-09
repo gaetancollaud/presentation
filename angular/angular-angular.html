@@ -323,7 +323,9 @@ export class ExponentialStrengthPipe implements PipeTransform {
 			<section>
 				<h2>Services</h2>
 				<ul>
-					<li>Can be injected in components</li>
+					<li><s>Factory</s></li>
+					<li><s>Provider</s></li>
+					<li>Can be injected in components, diretives and pipes</li>
 					<li>Can be injected in other services</li>
 					<li>Is a singleton (unless you declare it multiple times in the dependencies tree)</li>
 					<li>Useful to manage data</li>
@@ -349,7 +351,329 @@ expect(injector.get(NeedsService).service instanceof UsefulService)
 	.toBe(true);
 				</code></pre>
 			</section>
+			<section>
+				<h2>Declaration</h2>
+				<h3>In module</h3>
+				<pre><code data-trim class="typescript">
+@NgModule({
+  providers: [UsefulService, NeedsService], //singleton
+})
+export class AppModule { }
+				</code></pre>
+				<h3>In component</h3>
+				<pre><code data-trim class="typescript">
+@Component({
+  providers: [NeedsService], //new instance => not singleton
+})
+export class MyComponent { }
+				</code></pre>
+			</section>
+			<section>
+				<h2>Dependecy injection</h2>
+				<pre><code data-trim class="typescript">
+@Injectable()
+class UsefulService {
+}
+
+@Injectable()
+class NeedsService {
+	constructor(public service: UsefulService) {}
+}
+
+
+@Component(...)
+export class AppComponent {
+	constructor(public service: UsefulService) {}
+}
+				</code></pre>
+			</section>
 		</section>
+		<section>
+			<section>
+				<h2>Modules</h2>
+				<ul>
+					<li>Can import other module (import)</li>
+					<li>Can declare services (providers)</li>
+					<li>Can declare components (declaration)</li>
+					<li>Can export component to other (export)</li>
+					<li>Can boostrap an app</li>
+				</ul>
+			</section>
+			<section>
+				<pre><code data-trim class="typescript">
+@NgModule({
+	providers?: Provider[]
+	declarations?: Array< Type < any >|any[] >
+	imports?: Array< Type < any >| ModuleWithProviders | any[] >
+	exports?: Array< Type < any >| any[] >
+	bootstrap?: Array< Type< any >|any[] >
+	...
+})
+				</code></pre>
+			</section>
+			<section>
+				<h2>Why creating modules</h2>
+				<ul>
+					<li>For logic functionalities separation</li>
+					<li>For optimisation
+						<ul>
+							<li>Unused modules will not be in final bundle</li>
+							<li>Lazy loading</li>
+						</ul>
+					</li>
+					<li>To hide internal components</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Angular modules</h2>
+				<ul>
+					<li>BrowserModule</li>
+					<li>FormModule</li>
+					<li>HttpModule</li>
+					<li>RouterModule</li>
+					<li>...</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Dependency lookup</h2>
+				<img src="images/dependency-lookup.png"/>
+			</section>
+			<section>
+				<h2>Dependency tree</h2>
+				<img src="images/dependencies.svg"/>
+				<p><a href="https://github.com/compodoc/ngd">Tools to generate doc</a></p>
+			</section>
+			<section>
+				<h2>forRoot</h2>
+				<pre><code data-trim class="typescript">
+@NgModule({})
+export class SharedModule {
+	static forRoot(): ModuleWithProviders {
+		return {
+			ngModule: SharedModule,
+			providers: [CounterService]
+		};
+	}
+}
+				</code></pre>
+				<pre><code data-trim class="typescript">
+@NgModule({
+	imports: [ SharedModule.forRoot() ]
+})
+export class MainModule
+				</code></pre>
+				<pre><code data-trim class="typescript">
+@NgModule({
+	imports: [ SharedModule ]
+})
+export class LazyModule
+				</code></pre>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h2>Router</h2>
+				<ul>
+					<li>Display view based on the url</li>
+					<li>Create/destroy component</li>
+					<li>Multiple router-outlet possible</li>
+					<li>Route delegation (child router)</li>
+					<li>Directive to insert link</li>
+					<li>Lazy loading</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Router: definition</h2>
+				<pre><code data-trim class="typescript">
+const appRoutes: Routes = [
+	{ path: 'crisis-center', component: CrisisListComponent },
+	{ path: 'hero/:id',      component: HeroDetailComponent },
+	{
+		path: 'heroes',
+		component: HeroListComponent,
+		data: { title: 'Heroes List' }
+	},{
+		path: '',
+		redirectTo: '/heroes',
+		pathMatch: 'full'
+	},
+	{ path: '**', component: PageNotFoundComponent }
+];
+				</code></pre>
+			</section>
+			<section>
+				<h2>Router: child</h2>
+				<pre><code data-trim class="typescript">
+const appRoutes: Routes = [{
+   path: 'parent',
+   children: [
+     { path: 'a', component: ChildA },
+     { path: 'b', component: ChildB }
+   ]
+}];
+				</code></pre>
+			</section>
+			<section>
+				<h2>Router: outlet</h2>
+				<pre><code data-trim class="typescript">
+[{
+   path: 'parent',
+   children: [
+     { path: '', component: MainChild },
+     { path: '', component: AuxChild, outlet: 'aux' }
+   ]
+}]
+				</code></pre>
+			</section>
+			<section>
+				<h2>Router outlet</h2>
+				<pre><code data-trim class="html">
+<div class="main-content">
+	<router-outlet></router-outlet>
+</div>
+				</code></pre>
+				<pre><code data-trim class="html">
+<div class="main-content">
+	<router-outlet></router-outlet>
+</div>
+<div class="aux-content">
+	<router-outlet name='left'></router-outlet>
+</div>
+				</code></pre>
+			</section>
+			<section>
+				<h2>Router link</h2>
+				<pre><code data-trim class="html">
+<div class="menu">
+
+	<a routerLink="/crisis-center" routerLinkActive="active-class">
+	   Crisis Center</a>
+
+	<a routerLink="/heroes" routerLinkActive="active-class">
+		Heroes</a>
+
+</div>
+				</code></pre>
+			</section>
+			<section>
+				<h2>Guard</h2>
+				<ul>
+					<li>Can prevent route to be activated</li>
+					<li>Can be useful for security restriction</li>
+					<li>Can be useful for dirty form</li>
+					<li>Can be async</li>
+					<li>Only prevent the route change, do not hide router-link</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Guard: declaration</h2>
+				<pre><code data-trim class="typescript">
+@Injectable()
+export class RoleGuard implements CanActivate {
+
+	constructor(readonly securityService: SecurityService) {
+	}
+
+	canActivate(route: ActivatedRouteSnapshot,
+			state: RouterStateSnapshot)
+			: Observable< boolean > | Promise< boolean > | boolean {
+		let roles = route.data["roles"] as Array< RoleType >;
+		return this.securityService.hasOneRole(...roles).take(1);
+	}
+}
+				</code></pre>
+			</section>
+			<section>
+				<h2>Guard: usage</h2>
+				<pre><code data-trim class="typescript">
+const appRoutes: Routes = [{
+	path: 'pacs-door-groups',
+	component: DoorGroupsView,
+	canActivate: [RoleGuard],
+	data: {roles: [
+		RoleType.ROLE_GLOBAL_ADMIN,
+		RoleType.ROLE_PACS_OPERATOR_SETUP
+	]}
+}];
+				</code></pre>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>Angular compilation</h2>
+				<ul>
+					<li>Compile angular stuff into plain javascript/html</li>
+					<li>Handled by package angular@compiler</li>
+					<li>JIT: Run in browser</li>
+					<li>AOT: Run at compile time</li>
+				</ul>
+			</section>
+			<section>
+				<h2>JIT: Just In Time</h2>
+				<ul>
+					<li>Compile included in bundle</li>
+					<li>Compilation made in browser</li>
+					<li>Compilation made when route activated</li>
+					<li>Do not compile useless stuff</li>
+					<li>Quicker for development</li>
+					<li>Bundle was smaller, now bigger</li>
+				</ul>
+			</section>
+			<section>
+				<h2>AOT: Ahed Of Time</h2>
+				<ul>
+					<li>Compile at build</li>
+					<li>Compiler not included in final bundle</li>
+					<li>Compile everything</li>
+					<li>Increase build time</li>
+					<li>Bundle now smaller due to late optimisation</li>
+					<li>Default option for angular cli with profile "prod"</li>
+					<li>Faster loading in browser</li>
+				</ul>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h2>Lazy loading</h2>
+				<ul>
+					<li>Module load only when needed</li>
+					<li>Loading of the module trig by route change</li>
+					<li>The browser will then load a new js file</li>
+					<li>Can speedup big application</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Declaration</h2>
+				<pre><code data-trim class="typescript">
+const appRoutes: Routes = [
+	{path: 'camera', component: CameraListComponent},
+	{path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule'},
+	{path: '', redirectTo: 'camera', pathMatch:'full'},
+	{path: '**', redirectTo: ''}
+];
+				</code></pre>
+			</section>
+			<section>
+				<h2>Lazy chunk</h2>
+				<img src="images/lazy-loading-time.png" />
+			</section>
+		</section>
+		<section>
+			<h2>Angular universal</h2>
+			<p><a href="https://universal.angular.io/">universal.angular.io</a></p>
+			<ul>
+				<li>Can improve loading time</li>
+				<li>Improve crawls from search engine</li>
+				<li>Project at early stage</li>
+			</ul>
+			<p><a href="https://blog.devintent.com/whats-the-state-of-angular-universal-and-aot-3f5aa6605cc7">Blog post that compare AOT and Universal</a></p>
+		</section>
+		<section>
+			<h2>Next: <a href="./angular-additonal-topics.html">Additional topics</a></h2>
+		</section>
+
 	</div>
 </div>
 
