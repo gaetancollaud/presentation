@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Angular 2 - What's new compare to angular 1</title>
+
+	<meta name="description" content="A short description of Java 8 Features">
+	<meta name="author" content="Gaétan Collaud">
+
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/css/zenburn.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/night.min.css"/>
+	<!--<link rel="stylesheet"-->
+	<!--href="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/bootstrap/css/bootstrap.css">-->
+
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ?
+			'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.min.css' :
+			'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/paper.min.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		.reveal {
+			font-size: 38px;
+		}
+	</style>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+		<section>
+			<h1>Angular</h1>
+			<h2>Additional topics</h2>
+			<p>
+				<small>
+					<a href="http://collaud.net">Gaétan Collaud</a> / <a href="http://morphean.ch">Morphean</a>
+				</small>
+			</p>
+		</section>
+
+		<section>
+			<h2>Good practices</h2>
+			<ul>
+				<li>Api service</li>
+				<li>Integrate libraries</li>
+				<li>Model and view</li>
+			</ul>
+		</section>
+
+		<section>
+			<section>
+				<h2>Api service</h2>
+				<ul>
+					<li>Never use <b>Http</b> in your component</li>
+					<li>Create services to handle API call</li>
+					<li>Create module(s) to handle api services</li>
+					<li>Use abstraction if needed</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Api service</h2>
+				<pre><code data-trim class="typescript">
+
+@Injectable()
+export class CameraApiService {
+	constructor(private http: Http) {
+
+	}
+
+	public findAll(): Observable< CameraTO[] > {
+		return this.http.get('api/v1/cameras')
+			.map((r: Response) => r.json());
+	}
+}
+					</code></pre>
+			</section>
+			<section>
+				<h2>Example at Morphean</h2>
+				<p>
+					<a href="https://bitbucket.softcom.pro/projects/MORPVMS/repos/vp-angular2-public/browse/src/main/ts/services/api/base/abstract-crud-api-service.ts">abstract-crud-api-service.ts</a>
+				</p>
+				<pre><code data-trim class="typescript">
+export class AbstractCRUDApiService< T, ID> extends AbstractNotificationApiService {
+//...
+public getOne(id:ID):Observable< T> {
+	return this.notify(super.get(this.crudContext.baseUrl + "/" + id), 'getOne', false);
+}
+
+public add(obj:T):Observable< T> {
+	return this.notify(super.post(this.crudContext.baseUrl, obj), 'add');
+}
+//...
+					</code></pre>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>Install an angular library</h2>
+				<pre><code data-trim class="bash">
+yarn add @ngx-translate/core
+				</code></pre>
+				<pre><code data-trim class="typescript">
+@NgModule({
+    imports: [
+        BrowserModule,
+        TranslateModule.forRoot()
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }
+				</code></pre>
+				<p>That's it !</p>
+			</section>
+			<section>
+				<h2>External library</h2>
+				<pre><code data-trim class="bash">
+yarn add locomote-video-player
+				</code></pre>
+				<p><a href="https://bitbucket.softcom.pro/projects/MORPVMS/repos/vp-angular2-public/browse/src/main/ts/components/video/player/locomote/locomote.ts">locomote.ts</a></p>
+				<pre><code data-trim class="typescript">
+declare const Locomote: any;
+
+@Component(...)
+export class PlayerLocomote implements AfterViewInit {
+
+	private locomote: Locomote;
+
+	ngAfterViewInit(): void {
+		this.locomote = new Locomote(...);
+	}
+				</code></pre>
+
+				<pre><code data-trim class="json">
+{ //angular-cli.json
+	"apps": [{
+		"scripts": [
+			"../node_modules/locomote/dist/locomote.min.js"
+		],
+				</code></pre>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h2>Model and view</h2>
+				<ul>
+					<li>The component is responsible only to display data</li>
+					<li>A service hold the data</li>
+					<li>The service has method to alter data</li>
+					<li>Use of observable to update the view</li>
+					<li>Easy to have the same data across components</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Service</h2>
+				<pre><code data-trim class="typescript">
+@Injectable()
+export class UserDatastore {
+
+	public currentUser:Subject< User> = new Subject(null);
+	public listOfUsers: Subject< User[]> = new Subject([]);
+
+	protected reloadUsers(): void {
+		this.userApiService.findAll().subscribe((users => this.listOfUsers.next(users));
+	}
+
+	public save(u:User): User{
+		this.userApiService.save(u).subscribe((user => {
+			this.currentUser.next(user);
+			this.reloadUsers();
+		});
+	}
+				</code></pre>
+			</section>
+			<section>
+				<h2>Component</h2>
+				<pre><code data-trim class="typescript">
+@Component(...)
+export class UserList implements OnInit {
+
+	private users: User[];
+
+	constructor(private userDatastore: UserDatastore){}
+
+	ngInit(): void {
+		this.userDatastore.listOfUsers
+			.subscribe(users => this.users = users);
+	}
+
+	protected selectUser(u:User){
+		this.userDatastore.selectUser(u);
+	}
+				</code></pre>
+			</section>
+			<section>
+				<h2>Schematic</h2>
+				<img src="images/user-datastore.png" style="background: white;" />
+			</section>
+		</section>
+
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.min.js"></script>
+
+<script>
+
+	// Full list of configuration options available at:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: false,
+		progress: true,
+		history: true,
+		center: true,
+		hideAddressBar: true,
+//				parallaxBackgroundImage: 'background/reveal-parallax-1.jpg', // e.g. "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"
+//				parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+//				parallaxBackgroundHorizontal: 200,
+//				parallaxBackgroundVertical: 50,
+		transition: 'none', // none/fade/slide/convex/concave/zoom
+
+		// Optional reveal.js plugins
+		dependencies: [
+			{
+				src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/classList.js',
+				condition: function () {
+					return !document.body.classList;
+				}
+			},
+			{
+				src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/markdown/marked.js',
+				condition: function () {
+					return !!document.querySelector('[data-markdown]');
+				}
+			},
+			{
+				src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/markdown/markdown.min.js',
+				condition: function () {
+					return !!document.querySelector('[data-markdown]');
+				}
+			},
+			{
+				src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/highlight/highlight.min.js',
+				async: true,
+				condition: function () {
+					return !!document.querySelector('pre code');
+				},
+				callback: function () {
+					hljs.initHighlightingOnLoad();
+				}
+			},
+			{src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/zoom-js/zoom.min.js', async: true},
+			{src: 'http://cdn.rawgit.com/hakimel/reveal.js/3.5.0/plugin/notes/notes.js', async: true}
+		]
+	});
+
+</script>
+
+</body>
+</html>

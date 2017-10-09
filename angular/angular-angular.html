@@ -557,6 +557,51 @@ const appRoutes: Routes = [{
 				</code></pre>
 			</section>
 			<section>
+				<h2>Route param: definition</h2>
+				<pre><code data-trim class="typescript">
+export const routes: Routes = [
+  { path: '', redirectTo: 'product-list', pathMatch: 'full' },
+  { path: 'product-list', component: ProductList },
+  { path: 'product-details/:id', component: ProductDetails }
+];
+				</code></pre>
+			</section>
+			<section>
+				<h2>Route param: naviguate</h2>
+				<pre><code data-trim class="html">
+<a [routerLink]="['/product-details', product.id]">
+	{{ product.name }}
+</a>
+				</code></pre>
+				<pre><code data-trim class="typescript">
+goToProductDetails(id) {
+	this.router.navigate(['/product-details', id]);
+}
+				</code></pre>
+			</section>
+			<section>
+				<h2>Route param: read</h2>
+				<pre><code data-trim class="typescript">
+@Component(...)
+export class LoanDetailsPage implements OnInit, OnDestroy {
+	id: number;
+	private sub: any;
+
+	constructor(private route: ActivatedRoute) {}
+
+	ngOnInit() {
+		this.sub = this.route.params.subscribe(params => {
+			this.id = +params['id']; // (+) converts string 'id' to a number
+		});
+	}
+
+	ngOnDestroy() {
+		this.sub.unsubscribe();
+	}
+}
+				</code></pre>
+			</section>
+			<section>
 				<h2>Guard</h2>
 				<ul>
 					<li>Can prevent route to be activated</li>
@@ -671,7 +716,17 @@ const appRoutes: Routes = [
 			<p><a href="https://blog.devintent.com/whats-the-state-of-angular-universal-and-aot-3f5aa6605cc7">Blog post that compare AOT and Universal</a></p>
 		</section>
 		<section>
-			<h2>Next: <a href="./angular-additonal-topics.html">Additional topics</a></h2>
+			<h2>Service worker</h2>
+			<ul>
+				<li>Package angular@service-worker</li>
+				<li>Help creating service work for your app</li>
+				<li>Progressive web app</li>
+				<li>Project at early stage</li>
+				<li>Integrated with angular-cli</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Next: <a href="./angular-additional-topics.html">Additional topics</a></h2>
 		</section>
 
 	</div>
