@@ -266,6 +266,21 @@ export class NgIf {
 }
 				</code></pre>
 			</section>
+			<section>
+				<h2>Templates</h2>
+				<pre><code data-trim class="html">
+  <ul>
+    <li *ngFor="let hero of heroes">
+      {{ hero }}
+    </li>
+  </ul>
+				</code></pre>
+				<pre><code data-trim class="html">
+<div *ngIf="show; else elseBlock">Text to show</div>
+<ng-template #elseBlock>Alternate text while primary text is hidden</ng-template>
+				</code></pre>
+
+			</section>
 		</section>
 
 		<section>
