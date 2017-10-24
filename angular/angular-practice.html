@@ -78,10 +78,70 @@ ng serve
 			<h2>Be a hero</h2>
 			<ul>
 				<li>Create a view to list all heros</li>
-				<li>Create pipes to display the height</li>
+				<li>Create pipes to display the height and birthday</li>
 				<li>Create a view to add/edit them</li>
 				<li>Create routes</li>
-				<li>Lazy load the castles</li>
+				<li>Lazy load the weapon edition</li>
+				<li>Server sent event</li>
+				<li>Intercept calls to display toast message</li>
+			</ul>
+		</section>
+		<section>
+			<h2>API</h2>
+			<h3>hero</h3>
+			<p>
+				<a href="https://angular.collaud6.collaud.me/api/heroes">https://angular.collaud6.collaud.me/api/heroes</a>
+			</p>
+			<h3>Weapon</h3>
+			<p>
+				<a href="https://angular.collaud6.collaud.me/api/weapons">https://angular.collaud6.collaud.me/api/weapons</a>
+			</p>
+		</section>
+		<section>
+			<h2>API</h2>
+			<table>
+				<tr>
+					<th>METHOD</th>
+					<th>PATH</th>
+					<th>action</th>
+				</tr>
+				<tr>
+					<td>GET</td>
+					<td>heroes</td>
+					<td>Get all heroes</td>
+				</tr>
+				<tr>
+					<td>GET</td>
+					<td>heroes/1</td>
+					<td>Get hero with id 1</td>
+				</tr>
+				<tr>
+					<td>POST</td>
+					<td>heroes</td>
+					<td>Add an hero</td>
+				</tr>
+				<tr>
+					<td>PUT</td>
+					<td>heroes/1</td>
+					<td>Update the hero with id 1</td>
+				</tr>
+				<tr>
+					<td>DELETE</td>
+					<td>heroes/1</td>
+					<td>DELETE the hero with id 1</td>
+				</tr>
+			</table>
+		</section>
+		<section>
+			<h2>Server sent event</h2>
+			<p>
+				<a href="https://angular.collaud6.collaud.me/api/sse/stream">https://angular.collaud6.collaud.me/sse/stream</a>
+			</p>
+			<p>Event broadcasted:</p>
+			<ul>
+				<li>add</li>
+				<li>edit</li>
+				<li>delete</li>
 			</ul>
 		</section>
 
