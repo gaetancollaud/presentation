@@ -72,6 +72,45 @@
 
 		<section>
 			<section>
+				<h3>You can do: weather station</h3>
+				<img src="images/can_do_weather.jpg" height="500px"/>
+			</section>
+			<section>
+				<h3>You can do: balance robot</h3>
+				<img src="images/can_do_balance.jpg" height="500px"/>
+			</section>
+			<section>
+				<h3>You can do: GPS tracker</h3>
+				<img src="images/can_do_gps.jpg" height="500px"/>
+			</section>
+			<section>
+				<h3>You can do: egg printer</h3>
+				<img src="images/can_do_eggbot.jpg" height="500px"/>
+			</section>
+			<section>
+				<h3>You can do: 3d printer</h3>
+				<img src="images/can_do_3d_printer.jpg" height="500px"/>
+			</section>
+			<section>
+				<h3>You cannot do: supercomputer</h3>
+				<img src="images/cant_do_supercomputer.jpg" height="500px"/>
+			</section>
+			<section>
+				<h3>You cannot do: autonomous car</h3>
+				<img src="images/cant_do_autonomous_car.jpeg" height="500px"/>
+			</section>
+			<section>
+				<h3>You cannot do: image processing </h3>
+				<img src="images/cant_do_image_processing.jpg" height="500px"/>
+			</section>
+			<section>
+				<h3>You cannot do: rocket</h3>
+				<img src="images/cant_do_rocket.jpg" height="500px"/>
+			</section>
+		</section>
+
+		<section>
+			<section>
 				<h2>Arduino ?</h2>
 				<ul>
 					<li>micro controller</li>
@@ -97,7 +136,11 @@
 				<img src="images/arduino_nano.jpg" height="500px"/>
 			</section>
 			<section>
-				<h2>ATMEGA</h2>
+				<h2>Arduino family</h2>
+				<img src="images/arduino_family.jpg" height="500px"/>
+			</section>
+			<section>
+				<h2>Microcontroller</h2>
 				<img src="images/atmega.jpg" height="500px"/>
 			</section>
 			<section>
@@ -114,17 +157,176 @@
 					<li>VCC = 5V = HIGH</li>
 				</ul>
 			</section>
-			
+
 		</section>
 
 		<section>
-			<h2><a href="./angular-additional-topics.html">Additional topics</a></h2>
-		</section>
+			<section>
+				<h2>Program structure</h2>
+				<img src="images/setup_loop.jpg" height="500px"/>
+			</section>
+			<section>
+				<h2>Setup</h2>
+				<ul>
+					<li>Init IOs direction</li>
+					<li>Init Serial</li>
+					<li>Init communication</li>
+					<li>Set initial state</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Setup</h2>
+				<pre><code data-trim class="c">
+void setup()
+{
+    pinMode(11, OUTPUT);
+    pinMode(A0, INPUT);
+    Serial.begin(9600);
+    digitalWrite(11, HIGH);
+}
+				</code></pre>
+			</section>
+			<section>
+				<h2>Loop</h2>
+				<ul>
+					<li>Loop fast !</li>
+					<li>Logic of your program here</li>
+					<li>can be paused</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Loop</h2>
+				<pre><code data-trim class="c">
+void loop()
+{
+    digitalWrite(12, HIGH);
+    delay(1000); // Wait for 1000 millisecond(s)
+    digitalWrite(12, LOW);
+    delay(500); // Wait for 500 millisecond(s)
+}
+				</code></pre>
+			</section>
+			<section>
+				<h2>Variables</h2>
+				<ul>
+					<li>named</li>
+					<li>can store a state</li>
+					<li>can be written anytime</li>
+					<li>can be read anytime</li>
+					<li>typed</li>
+				</ul>
+				<p><a href="https://www.arduino.cc/reference/en/#variables">Variables documentation</a></p>
+			</section>
+			<section>
+				<h2>Variables</h2>
+				<pre><code data-trim class="c">
+int myVar = 10;
+float withComa = 10.45;
+bool allowed = true;
+String chaine = "salut";
+				</code></pre>
+			</section>
+			<section>
+				<h2>Functions</h2>
+				<ul>
+					<li>setup and loop are "official" function</li>
+					<li>named</li>
+					<li>can take 0 or more argument</li>
+					<li>can return nothing or one element</li>
+				</ul>
+				<p><a href="https://www.arduino.cc/en/Reference/FunctionDeclaration">Function documentation</a></p>
+			</section>
+			<section>
+				<h2>Functions</h2>
+				<pre><code data-trim class="c">
+int multiply(int a, int b)
+{
+    return a * b;
+}
 
+void sayHelloTo(String name)
+{
+    Serial.print("Hello ");
+    Serial.print(name);
+    Serial.println();
+}
+				</code></pre>
+			</section>
+			<section>
+				<h2>Structure</h2>
+				<ul>
+					<li>condition</li>
+					<li>loop</li>
+					<li>...</li>
+				</ul>
+				<p><a href="https://www.arduino.cc/reference/en/#structure">Structure documentation</a></p>
+			</section>
+			<section>
+				<h2>If</h2>
+				<pre><code data-trim class="c">
+					int age = 15;
+
+					if(age >= 18){
+					    Serial.println("take a wisky");
+					}
+				</code></pre>
+			</section>
+			<section>
+				<h2>If / else </h2>
+				<pre><code data-trim class="c">
+					int age = 15;
+
+					if(age >= 18){
+					    Serial.println("take a wisky");
+					} else {
+					    Serial.println("take a sirup");
+					}
+				</code></pre>
+			</section>
+			<section>
+				<h2>If / else / else if</h2>
+				<pre><code data-trim class="c">
+					int age = 15;
+
+					if(age >= 18){
+					    Serial.println("take a wisky");
+					} else if( age >= 16){
+					    Serial.println("take a beer");
+					} else {
+					    Serial.println("take a sirup");
+					}
+				</code></pre>
+			</section>
+			<section>
+				<h2>For</h2>
+				<pre><code data-trim class="c">
+					int max = 10;
+
+					for( int i=0; i<10; i++){
+					    Serial.print(i);
+					    Serial.print(" ");
+					}
+				</code></pre>
+				<pre><code data-trim class="c">
+					0 1 2 3 4 5 6 7 8 9
+				</code></pre>
+			</section>
+			<section>
+				<h2>while</h2>
+				<pre><code data-trim class="c">
+					int buttonStatus = LOW;
+
+					while( buttonStatus == LOW ){
+					    buttonStatus = digitalRead(11);
+					}
+					Serial.print("Button was finally pressed");
+				</code></pre>
+			</section>
+		</section>
 		<section>
-			<h2><a href="./angular-practice.html">In practice</a></h2>
-		</section>
-
+			<section>
+				<h2>Examples !</h2>
+			</section>
 		</section>
 	</div>
 </div>
