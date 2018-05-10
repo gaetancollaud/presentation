@@ -120,6 +120,53 @@
 				</ul>
 			</section>
 			<section>
+				<h2>Arduino vs Computer</h2>
+				<table>
+					<tr>
+						<th>arduino</th>
+						<th>computer</th>
+						<th>unit</th>
+						<th></th>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>4000</td>
+						<td>Mhz</td>
+						<td>CPU</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>64</td>
+						<td>bit</td>
+						<td>Architecture</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>16'777'216</td>
+						<td>Kb</td>
+						<td>RAM</td>
+					</tr>
+					<tr>
+						<td>32+1</td>
+						<td>1'073'741'824</td>
+						<td>Kb</td>
+						<td>Storage</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>800</td>
+						<td>CHF</td>
+						<td>Price</td>
+					</tr>
+					<tr>
+						<td>...</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+			</section>
+			<section>
 				<h2>Arduino UNO</h2>
 				<img src="images/arduino_uno.jpg" height="500px"/>
 			</section>
@@ -140,10 +187,6 @@
 				<img src="images/arduino_family.jpg" height="500px"/>
 			</section>
 			<section>
-				<h2>Microcontroller</h2>
-				<img src="images/atmega.jpg" height="500px"/>
-			</section>
-			<section>
 				<h2>IOs (input/output)</h2>
 				<img src="images/arduino_pinout.jpg" height="500px"/>
 			</section>
@@ -157,7 +200,87 @@
 					<li>VCC = 5V = HIGH</li>
 				</ul>
 			</section>
+			<section>
+				<h2>Digital</h2>
+				<pre><code data-trim class="c">
+// write to pin 11
+digitalWrite(11, HIGH);
+digitalWrite(11, LOW);
 
+// read from pin 12
+digitalRead(12) == HIGH;
+digitalRead(12) == LOW;
+				</code></pre>
+			</section>
+			<section>
+				<h2>Analog</h2>
+				<ul>
+					<li>2.5V => 0V------|------5V</li>
+					<li>1.0V => 0V--|----------5V</li>
+					<li>3.0V => 0V--------|----5V</li>
+					<li>...</li>
+				</ul>
+				<br/>
+				<br/>
+				<ul>
+					<li>only read</li>
+					<li>10bit resolution = 1024 possibilities</li>
+					<li>5v / 1024 = 0.004V = 4mV</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Analog</h2>
+				<pre><code data-trim class="c">
+// read pin A0
+// value [0;1023]
+int value = analogRead(A0);
+				</code></pre>
+			</section>
+			<section>
+				<h2>Voltage divider</h2>
+				<table>
+					<tr>
+						<td><img src="images/voltage_divider.jpg" height="500px"/></td>
+						<td><img src="images/voltage_divider_formula.png" height="150px"/></td>
+					</tr>
+				</table>
+			</section>
+			<section>
+				<h2>Potentiometer</h2>
+				<table>
+					<tr>
+						<td><img src="images/potentiometer.jpg" height="500px"/></td>
+						<td><img src="images/potentiometer_schema.png" height="300px"/></td>
+					</tr>
+				</table>
+				<aside class="notes">
+					DEMO !
+				</aside>
+			</section>
+			<section>
+				<h2>Photoresistor</h2>
+				<img src="images/photoresistor_schema.jpg" height="500px"/>
+				<aside class="notes">
+					DEMO !
+				</aside>
+			</section>
+			<section>
+				<h2>PWM</h2>
+				<h3>Pulse Width Modulation</h3>
+				<img src="images/pwm.gif" height="400px" style="background: white"/>
+			</section>
+			<section>
+				<h2>PWM</h2>
+				<pre><code data-trim class="c">
+// write on pin ~9
+// range [0;255]
+int brigthness = 100;
+analogWrite(9, brightness);
+				</code></pre>
+				<aside class="notes">
+					DEMO !
+				</aside>
+			</section>
 		</section>
 
 		<section>
@@ -325,7 +448,15 @@ void sayHelloTo(String name)
 		</section>
 		<section>
 			<section>
-				<h2>Examples !</h2>
+				<h2>Exercices !</h2>
+				<ul>
+					<li>Blink a led</li>
+					<li>Read a potentiometer</li>
+					<li>Read a sensor (temp/light)</li>
+					<li>Dim a led</li>
+					<li>Move a servo motor</li>
+					<li>Combine two of the above !</li>
+				</ul>
 			</section>
 		</section>
 	</div>
