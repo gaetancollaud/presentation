@@ -3,7 +3,7 @@
   "transition": "slide",
   "controls": false,
   "progress": false,
-  "parallaxBackgroundImage": "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg",
+  "parallaxBackgroundImage": "./images/background.JPG",
   "parallaxBackgroundSize": "2100px 900px",
   "keyboard": {
     "81": "toggleOverview"
