@@ -1,12 +1,16 @@
-# External slide
-A paragraph with some text and a [link](http://hakim.se).
+# LoRaWan and Koalasense
+
+Gaétan Collaud / 18 August 2020
+
 
 note: blabla
 ---
 
-# ext Slide 2
+# LoRaWAN
 
-balasdfsadf
+Long Range Wide Area Network
+
+
 
 ---
 

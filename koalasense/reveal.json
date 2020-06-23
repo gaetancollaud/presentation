@@ -4,7 +4,7 @@
   "controls": false,
   "progress": false,
   "parallaxBackgroundImage": "./images/background.JPG",
-  "parallaxBackgroundSize": "2100px 900px",
+  "parallaxBackgroundSize": "1980px 1320px",
   "keyboard": {
     "81": "toggleOverview"
   }
