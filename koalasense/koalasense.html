@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>reveal.js</title>
+    <title>Koalasense and LoRaWan</title>
 
+    <link rel="stylesheet" href="./koalasense.css">
     <link rel="stylesheet" href="../reveal.js-4.0.2/dist/reset.css">
     <link rel="stylesheet" href="../reveal.js-4.0.2/dist/reveal.css">
     <link rel="stylesheet" href="../reveal.js-4.0.2/dist/theme/black.css" id="theme">
@@ -16,7 +17,155 @@
 <body>
 <div class="reveal">
     <div class="slides">
-        <section data-markdown="./koalasense.md"></section>
+        <section data-background-image="./images/background.JPG">
+            <h1>LoRaWAN and Koalasense</h1>
+            <p>Gaétan Collaud / 18 August 2020</p>
+        </section>
+
+        <section>
+            <h2>LoRaWAN</h2>
+
+            <p>Long Range Wide Area Network</p>
+
+        </section>
+        <section>
+            <h2>LoRaWAN</h2>
+
+            <ul>
+                <li>Long range</li>
+                <li>Very low power</li>
+                <li>Low frequency (EU 433Mhz and 868Mhz)</li>
+                <li>Max payload of 11 to 222 bytes</li>
+                <li>6 upstream messages per hour (depends)</li>
+                <li>Designed for the Internet Of Things</li>
+            </ul>
+
+        </section>
+        <section>
+            <h2>LoRaWAN distance record</h2>
+
+            <ul>
+                <li>832km</li>
+                <li>25mW</li>
+                <li>868Mhz</li>
+                <li>Line of sight</li>
+            </ul>
+
+
+            <aside class="notes">
+
+                Reality, there is wall, earth is not flat (we're not in belgium), hils
+                30km is a good range<br />
+               Earth not flat !
+                Stratospherical baloon
+            </aside>
+
+
+        </section>
+        <section>
+            <h2>LoRaWAN for Maker</h2>
+
+            <ul>
+                <li>The Things Network (TTN)</li>
+                <li>gateway maintained by people/school/organization/...</li>
+                <li>Free to use</li>
+                <li>Very low coverage (except in big city)</li>
+            </ul>
+        </section>
+        <section>
+            <h2>TTN in Switzerland</h2>
+            <img src="./images/ttn_switzerland.png" />
+        </section>
+        <section>
+            <h2>TTN in Bern</h2>
+            <img src="./images/ttn_bern.png" />
+        </section>
+        <section>
+            <h2>LoRaWAN in Switzerland</h2>
+            <ul>
+                <li>Swisscom has the lead</li>
+                <li>96.7% of population covered (not land !)</li>
+                <li>pay to be partner</li>
+                <li>pay per devices (2chf/month)</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Swisscom coverage</h2>
+            <img src="./images/swisscom_coverage.png" />
+        </section>
+
+        <section>
+            <h2>Koalasense</h2>
+            <p>2 engineers in electronics</p>
+            <table>
+                <tr>
+                    <td>
+                        <img class="profile-image" src="https://www.koalasense.ch/assets/jacques.jpg" />
+                    </td>
+                    <td>
+                        <img class="profile-image" src="https://www.koalasense.ch/assets/nicolas.png" />
+                    </td>
+                </tr>
+            </table>
+            <p>2 software engineers</p>
+            <table>
+                <tr>
+                    <td>
+                        <img class="profile-image" src="https://www.koalasense.ch/assets/stephaneProfile.jpg" />
+                    </td>
+                    <td>
+                        <img class="profile-image" src="https://www.koalasense.ch/assets/gaetan.jpg" />
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>Koalasense</h2>
+            <ul>
+                <li>Develop own devices</li>
+                <li>Develop own cloud platform </li>
+                <li>Use mainly Swisscom as carrier</li>
+                <li>Use MessageBird for SMS and Voice call</li>
+            </ul>
+        </section>
+        <section>
+            <h2>One Koala</h2>
+            <img style="max-height: 50vh" src="./images/koala.png" />
+        </section>
+        <section>
+            <h2>One shielded Koala</h2>
+            <img  style="max-height: 50vh" src="./images/koala_shield.png" />
+        </section>
+
+        <section>
+            <h2>Koalasense</h2>
+            <ul>
+                <li>Started with wineyard</li>
+                <li>Continued with farmer</li>
+                <li>Side projects like the Ski World cup of Crans-Montana</li>
+                <li>Currently investigating soil moisture projects and watering</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Wineyard</h2>
+            <img  style="max-height: 50vh" src="./images/wineyard.jpg" />
+        </section>
+        <section>
+            <h2>Wineyard fire</h2>
+            <img  style="max-height: 50vh" src="./images/wineyard_fire.jpg" />
+        </section>
+        <section>
+            <h2>Ski World Cup </h2>
+            <img  style="max-height: 50vh" src="./images/crans-montana.jpg" />
+        </section>
+        <section>
+            <h2>Demo</h2>
+            <p>
+                <a href="https://app.koalasense.ch/">https://app.koalasense.ch</a>
+            </p>
+        </section>
+
     </div>
 </div>
 
@@ -30,9 +179,14 @@
     // - https://revealjs.com/config/
     Reveal.initialize({
         hash: true,
+        transition: 'none',
 
         // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+
+        markdown: {
+            smartypants: true
+        }
     });
 </script>
 </body>
