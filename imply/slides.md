@@ -33,7 +33,7 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 - **Imply Pivot** - The visualisation tool of Imply
 - **Apache Superset** - Alternative to Pivot
 - **Demo** - Show me some data !
-- **Question** - I'm sure you have one
+- **Questions** - I'm sure you have one
 
 ---
 layout: image-left
@@ -85,11 +85,11 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 
 # Under the hood
 
-Same as kafka => segmentation/partition.
+segmentation/partition => Same as kafka 
 
 Time based but can also be split on a dimension.
 
-Perfect segment is around 700mb.
+"Perfect" segment is around 700mb
 
 Rollout => "compact" the data
 
@@ -98,146 +98,80 @@ Time base eviction
 Currently, join table are in memory (limitation)
 
 ---
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly use. And add your custom components are also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-
----
-class: px-20
+layout: image-right
+image: https://source.unsplash.com/collection/94734566/1920x1080
 ---
 
-# Themes
+# Imply
 
-Slidev comes with powerful theming support. Themes are able to provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
+Confluent, know them ?
 
-<div grid="~ cols-2 gap-2" m="-t-2">
+Imply is like confluent
 
-```yaml
----
-theme: default
----
-```
+but for Apache Druid and not kafka
 
-```yaml
----
-theme: seriph
----
-```
+Main contributor of Apache Druid
 
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
+Products:
+* Imply Pivot
+* Imply Clarity
+* Imply Manager
+* Imply Cloud
 
 ---
-preload: false
----
 
-# Animations
+# Imply pivot
 
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
-</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
-  </div>
-
-  <div 
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
+<img border="rounded" src="https://www.datocms-assets.com/11147/1560871552-screenshot-dashboard.png">
 
 ---
+layout: image-right
+image: https://www.datocms-assets.com/11147/1560871552-screenshot-dashboard.png
+---
+
+# Imply pivot
+
+Rapid data exploration
+
+Every change trigger a query
+
+Was open source:
+ * https://github.com/implydata/pivot
+
+Forks can be found:
+ * https://github.com/allegro/turnilo
+
+Demo later ;)
+
+---
+
+# Apache superset
+
+<img border="rounded" src="https://superset.apache.org/images/dashboard3.png">
+
+---
+layout: image-right
+image: https://superset.apache.org/images/dashboard3.png
+---
+
+# Apache superset
+
+100% Opensource
+
+Supports a lot of databases (including Apache Druid)
+
+Supports a lot of different visualizations
+
+Edit mode - View mode
+
+Very customizable
+* CSS customization
+* plugin development
+
+Demo later ;)
+
+---
+
 
 # LaTeX
 
