@@ -8,6 +8,7 @@ background: https://source.unsplash.com/collection/94734566/1920x1080
 class: 'text-center'
 # https://sli.dev/custom/highlighters.html
 highlighter: shiki
+download: true
 ---
 
 # Apache Druid and Imply
