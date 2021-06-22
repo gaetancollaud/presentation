@@ -77,7 +77,7 @@ Not that easy to setup...
 
 # Apache Druid Architecture
 
-<img border="rounded" src="https://druid.apache.org/docs/latest/assets/druid-architecture.png">
+<img class="h-110 rounded" src="https://druid.apache.org/docs/latest/assets/druid-architecture.png">
 
 ---
 layout: image-right
@@ -102,7 +102,7 @@ Currently, join table are in memory (limitation)
 
 # UI of apache Druid 
 
-<img border="rounded" src="https://miro.medium.com/max/2400/1*9NxhsXfy9-xmPVshxOZW7Q.png">
+<img class="h-110 rounded" src="https://miro.medium.com/max/2400/1*9NxhsXfy9-xmPVshxOZW7Q.png">
 
 ---
 layout: image-right
@@ -124,7 +124,7 @@ Ingress data from:
 
 # Configure fields
 
-<img border="rounded" src="https://www.datocms-assets.com/11147/1561671382-data-loader.png">
+<img class="h-110 rounded" src="https://www.datocms-assets.com/11147/1561671382-data-loader.png">
 
 ---
 layout: image-right
@@ -151,7 +151,7 @@ Products:
 
 # Imply pivot
 
-<img border="rounded" src="https://www.datocms-assets.com/11147/1560871552-screenshot-dashboard.png">
+<img class="h-110 rounded" src="https://www.datocms-assets.com/11147/1560871552-screenshot-dashboard.png">
 
 ---
 layout: image-right
@@ -176,7 +176,7 @@ Demo later ;)
 
 # Apache superset
 
-<img border="rounded" src="https://superset.apache.org/images/dashboard3.png">
+<img   class="h-110 rounded" src="https://superset.apache.org/images/dashboard3.png">
 
 ---
 layout: image-right
@@ -204,7 +204,7 @@ layout: center
 ---
 
 # Questions so far ?
-<img center border="rounded" src="https://media0.giphy.com/media/l378fZRQlBmeN0nm0/giphy.gif?cid=ecf05e47fnmossf0bh28k6zqvpuo90o84sqb7yjiwwbwdgon&rid=giphy.gif&ct=g">
+<img center  class="h-110 rounded" src="https://media0.giphy.com/media/l378fZRQlBmeN0nm0/giphy.gif?cid=ecf05e47fnmossf0bh28k6zqvpuo90o84sqb7yjiwwbwdgon&rid=giphy.gif&ct=g">
 
 ---
 layout: center
@@ -213,7 +213,7 @@ layout: center
 # Demo 
 
 
-<img center border="rounded" src="https://media0.giphy.com/media/xT5LMH24b54rPyoEj6/giphy.gif?cid=ecf05e47cue969veyrctubh821bkt2pw6qhdjqlrmi094cks&rid=giphy.gif&ct=g">
+<img center  class="h-110 rounded" src="https://media0.giphy.com/media/xT5LMH24b54rPyoEj6/giphy.gif?cid=ecf05e47cue969veyrctubh821bkt2pw6qhdjqlrmi094cks&rid=giphy.gif&ct=g">
 
 
 ---
@@ -224,5 +224,5 @@ layout: center
 
 ...for your attention
 
-<img center border="rounded" src="https://media1.giphy.com/media/3oz8xIsloV7zOmt81G/giphy.gif?cid=ecf05e478vnxie51papr4y77ihtg5f2079gzfk2vyurn4bpj&rid=giphy.gif&ct=g">
+<img center  class="h-110 rounded" src="https://media1.giphy.com/media/3oz8xIsloV7zOmt81G/giphy.gif?cid=ecf05e478vnxie51papr4y77ihtg5f2079gzfk2vyurn4bpj&rid=giphy.gif&ct=g">
 
