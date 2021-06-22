@@ -3,7 +3,7 @@
 theme: seriph
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: https://source.unsplash.com/collection/94734566/1920x1080
+background: https://source.unsplash.com/1920x1080/weekly?nature
 # apply any windi css classes to the current slide
 class: 'text-center'
 # https://sli.dev/custom/highlighters.html
@@ -24,13 +24,13 @@ Gaétan Collaud
 
 ---
 layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
+image: https://source.unsplash.com/1920x1080/weekly?nature
 ---
 
 # Summary
 
 - **Apache Druid** - Database for analytics
-- **Imply** - The Confluent of Apache Druid
+- **Imply** - Apache Druid as a service
 - **Imply Pivot** - The visualisation tool of Imply
 - **Apache Superset** - Alternative to Pivot
 - **Demo** - Show me some data !
@@ -81,7 +81,7 @@ Not that easy to setup...
 
 ---
 layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
+image: https://source.unsplash.com/1920x1080/weekly?nature
 ---
 
 # Under the hood
@@ -99,8 +99,36 @@ Time base eviction
 Currently, join table are in memory (limitation)
 
 ---
+
+# UI of apache Druid 
+
+<img border="rounded" src="https://miro.medium.com/max/2400/1*9NxhsXfy9-xmPVshxOZW7Q.png">
+
+---
 layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
+image: https://miro.medium.com/max/2400/1*4whEJtKe9-Ab6bvX6pFcng.png
+---
+
+# Add data
+
+
+Ingress data from: 
+* Kafka
+* S3
+* Simple http queries
+* local upload
+* Druid itself (reindex)
+* ...
+
+---
+
+# Configure fields
+
+<img border="rounded" src="https://www.datocms-assets.com/11147/1561671382-data-loader.png">
+
+---
+layout: image-right
+image: https://source.unsplash.com/1920x1080/weekly?nature
 ---
 
 # Imply
@@ -172,65 +200,29 @@ Very customizable
 Demo later ;)
 
 ---
-
-
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
-
+layout: center
 ---
 
-# Diagrams
+# Questions so far ?
+<img center border="rounded" src="https://media0.giphy.com/media/l378fZRQlBmeN0nm0/giphy.gif?cid=ecf05e47fnmossf0bh28k6zqvpuo90o84sqb7yjiwwbwdgon&rid=giphy.gif&ct=g">
 
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
+---
+layout: center
+---
 
-<div class="grid grid-cols-2 gap-4 pt-4 -mb-6">
+# Demo 
 
-```mermaid {scale: 0.9}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
 
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
+<img center border="rounded" src="https://media0.giphy.com/media/xT5LMH24b54rPyoEj6/giphy.gif?cid=ecf05e47cue969veyrctubh821bkt2pw6qhdjqlrmi094cks&rid=giphy.gif&ct=g">
 
 
 ---
 layout: center
-class: text-center
 ---
 
-# Learn More
+# Thanks
 
-[Documentations](https://sli.dev) / [GitHub Repo](https://github.com/slidevjs/slidev)
+...for your attention
+
+<img center border="rounded" src="https://media1.giphy.com/media/3oz8xIsloV7zOmt81G/giphy.gif?cid=ecf05e478vnxie51papr4y77ihtg5f2079gzfk2vyurn4bpj&rid=giphy.gif&ct=g">
+
