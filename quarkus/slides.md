@@ -46,11 +46,18 @@ image: https://source.unsplash.com/1920x1080/weekly?code
 <br />
 
 ### In summary
- * designed for k8s
+ * Designed for k8s
  * AOT compilation and native image
- * fast boot, fast scale
- * low memory usage
+ * Fast boot, fast scale
+ * Low memory usage
  * Live reload when in development
+
+<br />
+<br />
+
+```
+sdm-hooks native (powered by Quarkus 1.13.7.Final) started in 0.042s
+```
 
 ---
 
